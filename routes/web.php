@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/patients', 'PatientController@index');
+Route::get('/patients/{id}', 'PatientController@edit');
+Route::get('/patient/new', 'PatientController@create');
+Route::post('/patient', 'PatientController@store');
+Route::post('/patients/{id}', 'PatientController@update');

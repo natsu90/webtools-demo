@@ -15,6 +15,7 @@ class LoginTest extends TestCase
      *
      * @return void
      */
+    // https://medium.com/@DCzajkowski/testing-laravel-authentication-flow-573ea0a96318
     public function test_user_can_view_login_page()
     {
         $response = $this->get('/login');
