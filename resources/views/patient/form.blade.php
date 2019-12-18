@@ -34,6 +34,24 @@
                     {{ Form::submit('Save') }}
 
                     {{ Form::close() }}
+
+                    @if (isset($patient))
+                    <a href='{{ url("/patients/{$patient->id}/new-note") }}' class="btn">Add New Note</a>
+
+                    <table class="table">
+                        <thead>
+                            <tr><th>Notes</th></tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($patient->notes as $note)
+                            <tr><td><a href="{{ url('/notes', $note->id) }}">{{ $note->description }}</a></td></tr>
+                            @empty
+                            <tr><td>No data</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+
+                    @endif
                 </div>
             </div>
         </div>

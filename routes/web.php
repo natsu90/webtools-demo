@@ -24,3 +24,8 @@ Route::get('/patients/{id}', 'PatientController@edit');
 Route::get('/patient/new', 'PatientController@create');
 Route::post('/patient', 'PatientController@store');
 Route::post('/patients/{id}', 'PatientController@update');
+
+Route::post('/patients/{id}/note', 'NoteController@store');
+Route::post('/notes/{id}', 'NoteController@update');
+Route::get('/patients/{id}/new-note', 'NoteController@create');
+Route::get('/notes/{id}', 'NoteController@edit');

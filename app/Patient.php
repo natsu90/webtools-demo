@@ -6,13 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends BaseModel
 {
-	public function creator()
+	public function notes()
 	{
-		return $this->belongsTo(User::class);
-	}
-
-	public function updater()
-	{
-		return $this->belongsTo(User::class);
+		return $this->hasMany(Note::class);
 	}
 }

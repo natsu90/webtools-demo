@@ -2,14 +2,18 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Patient;
+use App\Note;
 use Faker\Generator as Faker;
-use Carbon\Carbon;
 use App\User;
+use App\Patient;
+use Carbon\Carbon;
 
-$factory->define(Patient::class, function (Faker $faker) {
+$factory->define(Note::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'description' => $faker->text,
+        'patient_id' => function () {
+            return factory(Patient::class)->create()->id;
+        },
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
         'created_by' => function () {

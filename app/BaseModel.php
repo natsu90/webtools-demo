@@ -14,16 +14,24 @@ class BaseModel extends Model
     {
         parent::boot();
 
-        // create a event to happen on updating
         static::saving(function($table)  {
             $table->updated_by = Auth::user()->id;
             $table->updated_at = Carbon::now();
         });
 
-        // create a event to happen on saving
         static::creating(function($table)  {
             $table->created_by = Auth::user()->id;
             $table->created_at = Carbon::now();
         });
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updater()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
