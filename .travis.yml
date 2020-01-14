@@ -15,6 +15,7 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
+  - php artisan dusk:update 73
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - php artisan serve &
 
